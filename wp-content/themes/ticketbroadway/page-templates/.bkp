@@ -1,0 +1,326 @@
+<?php
+/**
+ * Template Name: Ticket Result Page Template
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twelve
+ * @since Twenty Twelve 1.0
+ */
+
+get_header();
+
+require_once('genericLib.php');
+$parameters = array();
+$parameters['websiteConfigID']=20732;
+//$parameters['websiteConfigID']=20777;
+$parameters['numberOfRecords']='';
+$parameters['eventID']=$_REQUEST['eventID'];
+//echo '<h2>Ticket : baseball </h2>';
+//print_r($_GET);die;
+
+$Alltickets =  getTicketsCustom($parameters);
+
+$paramLowerPrice['orderByClause'] = 'ActualPrice ASC';
+$paramLowerPrice['numberOfRecords']= 1;
+$paramLowerPrice['websiteConfigID'] = 20732;
+$paramLowerPrice['eventID']=$_REQUEST['eventID'];
+
+$LowerPriceTicket =  getTicketsCustom($paramLowerPrice);
+$paramHigherPrice['orderByClause'] = 'ActualPrice DESC';
+$paramHigherPrice['numberOfRecords']= 1;
+$paramHigherPrice['websiteConfigID'] = 20732;
+$paramHigherPrice['eventID']=$_REQUEST['eventID'];
+
+$HigherPriceTicket =  getTicketsCustom($paramHigherPrice);
+
+$lowestPrice = ceil($LowerPriceTicket->ActualPrice);
+$highestPrice = ceil($HigherPriceTicket->ActualPrice);
+//print_r($lowestPrice);
+//print_r($highestPrice);  die;
+
+//echo "<pre>";print_r($Alltickets); //die;
+   //echo "</pre>";
+//echo getTickets2($parameters);
+$optTicketTypes = getTicketTypes($Alltickets);
+
+?>
+    <section class="">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="col-md-1 no-padding">
+              <h1 class="day h123MarginBottom">TUE</h1>
+              <div class="col-md-12 no-padding date-border">
+                <h2 class="date h123MarginBottom">Jan 22,2016</h2>
+                <h3 class="time h123MarginBottom">2.00 PM</h3>
+              </div>
+            </div>
+
+            
+            <div class="col-md-6 paddingClassCommon">
+              <h1 class="choose-seat-heading h123MarginBottom">Aladdin</h1>
+              <p class="para">New Amsterdam Theatre at New York, NY</p>
+            </div>
+
+            <div class="col-md-5 no-padding choose-top-right">
+              <ul class="list-unstyled">
+                <li class="different-li"><i class="fa fa-caret-left"></i> <h2 class="h123MarginBottom">200% Worry-Free Guarantee</h2></li>
+                <li><i class="fa fa-check"></i> <h2 class="h123MarginBottom">We are a resale marketplace, not the ticket seller.</h2></li>
+                <li><i class="fa fa-check"></i> <h2 class="h123MarginBottom">Prices are set by third-party sellers and may be above or below face value.</h2></li>
+                <li><i class="fa fa-check"></i><h2 class="h123MarginBottom">Your seats are together unless otherwise noted.</h2></li>
+              </ul>
+            </div>
+          </div> 
+
+	  <form method="GET" action="" >
+          <div class="col-md-12 col-xs-12 no-padding">
+            <div class="col-md-2 col-xs-12 choose-right-border paddingClassCommon">
+              <select class="form-control" name="requestedTixSplit">
+                <option value="">Any Quantity</option>
+                <?php for($i=1;$i<=15;$i++){ ?>
+                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="col-md-4 col-xs-12 choose-right-border paddingClassCommon">
+              <div class="col-md-12 col-xs-12 all-range-sec no-padding">
+                  <div class="col-md-3 col-xs-12 no-padding">
+                    <h1 class="range-price h123MarginBottom">price Range 
+                  </div>
+                  <div class="col-md-1 col-xs-12 no-padding">
+                    <output id="range"><?php echo $lowestPrice; ?></output>
+                  </div>
+
+                  <div class="col-md-6 col-xs-12 no-padding">
+                    <div class="range">
+
+		      <input type="range" name="lowPrice" min="<?php echo $lowestPrice; ?>" max="<?php echo $highestPrice; ?>" value="<?php echo $lowestPrice; ?>" max="<?php echo $lowestPrice; ?>" min="<?php echo $highestPrice; ?>"  onchange="range.value=value">
+                    </div>
+                  </div>
+
+                  <div class="col-md-2 col-xs-12 no-padding">
+                     <output id="range"><?php echo $highestPrice; ?></output>
+                  </div>
+		<input type="hidden" value="<?php echo $highestPrice; ?>"/>
+
+              </div>
+            </div>
+
+             
+
+            <div class="col-md-2 col-xs-12 ticket-only choose-right-border paddingClassCommon">
+              <div class="checkbox">
+                <label>
+                  E-Tickets Only<input type="checkbox">
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2 col-xs-12 choose-tickte choose-right-border paddingClassCommon">
+              <select class="form-control">
+                <?php $optTicketTypes;
+
+		foreach($optTicketTypes as $ar){
+			$options .= '<option value="'.$ar.'">'.$ar.'</option>';
+		}
+		echo $options;
+ ?>
+              </select>
+            </div>
+            <div class="col-md-2 col-xs-12 choose-filters paddingClassCommon">
+	
+              <button class="btn btn-default">Reset Filters</button>
+            </div>
+</form>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="map-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-xs-12">
+
+            <div class="col-xs-1 hidden-md hidden-lg">
+              <button class="icon-btn"><i class="fa fa-plus"></i></button><br>
+              <button class="icon-btn btn-2"><i class="fa fa-minus"></i></button>
+            </div>
+
+
+            <div class="col-md-7">
+               <?php echo '<img src="http://seatics.tickettransaction.com/'.getVenueMap($_REQUEST['venueID'],$_REQUEST['venueConfID']).'"  class="img-responsive" />'; ?>
+            </div>
+
+             <div class="col-md-6 col-md-offset-6 legenda-btn hidden-lg hidden-md text-right">
+              <button class="btn btn-default"> Show map Legenda <i class="fa fa-angle-up"></i></button>
+            </div>
+
+            <div class="col-md-1 hidden-xs hidden-sm">
+              <button class="icon-btn"><i class="fa fa-plus"></i></button><br>
+              <button class="icon-btn btn-2"><i class="fa fa-minus"></i></button>
+            </div>
+
+            <div class="col-md-4 col-xs-12 chose-map-right-content no-padding">
+              <div class="col-md-12 col-xs-12 choose-tick-sec no-padding">
+                <div class="col-md-4  col-xs-4 no-padding">
+                  <div class="col-md-12 col-xs-12 choose-right-border no-padding">
+                    <div class="col-md-10 col-xs-10 paddingClassCommon">
+                      <h1 class="choose-right-any"><span>Quantity</span></h1>
+                      <h2 class="choose-right-any">Any Quantity</h2>
+                    </div>
+                    <div class=" ">
+                      <i class="fa fa-angle-down"></i> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-xs-4 no-padding">
+                  <div class="col-md-12 col-xs-12 choose-right-border no-padding">
+                    <div class="col-md-10 col-xs-10 paddingClassCommon">
+                      <h1 class="choose-right-any"><span>Price Range</span></h1>
+                      <h2 class="choose-right-any"><?php echo $lowestPrice; ?>-<?php echo $highestPrice; ?></h2>
+                    </div>
+                    <div class=" ">
+                      <i class="fa fa-angle-down"></i> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-xs-4 no-padding">
+                  <div class="col-md-12 col-xs-12 no-padding">
+                    <div class="col-md-10 col-xs-10 paddingClassCommon">
+                      <h1 class="choose-right-any"><span>Ticket Type</span></h1>
+                      <h2 class="choose-right-any">
+			<?php  foreach($optTicketTypes as $ar){
+						echo $ar; break;
+					}
+			 ?>
+		     </h2>
+                    </div>
+                    <div class=" ">
+                      <i class="fa fa-angle-down"></i> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-xs-12 no-padding text-center ">
+                <p class="low-to-high">Sort by Price - <span>Low to High <i class="fa fa-angle-down"></i></span></p>
+              </div>
+	      <?php for($y=0; $y<count($Alltickets); $y++) {  ?>
+              <div class="col-md-12 col-xs-12 right-content-1st-box right-content-box no-padding">
+                <div class="col-md-9 col-xs-8 paddingClassCommon">
+                  <h5 class="h5"><?php echo $Alltickets[$y]->Section.' '.$Alltickets[$y]->Notes; ?></h5>
+                  <h5 class="h5"><span><?php echo $Alltickets[$y]->Row.' - '.$Alltickets[$y]->TicketGroupType; ?></span></h5>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                  <h5 class="h5"><?php echo '$'.$Alltickets[$y]->ActualPrice; ?>/<span>ea</span> <i class="fa fa-angle-right hidden-xs"></i></h5>
+		  <select id="TGID_button_<?php echo $Alltickets[$y]->ID;?>_select"><?php echo getSplits($Alltickets[$y]->ValidSplits->int); ?></select>
+                  <div id="TGID_button_<?php echo $Alltickets[$y]->ID;?>" class="buyTixButton" eventID="<?php echo $Alltickets[$y]->EventID;?>" TGID="<?php echo $Alltickets[$y]->ID;?>" prix="<?php echo $Alltickets[$y]->ActualPrice;?>"><a href="javascript:void(0);" onclick="goToCheckout(this);">Buy</a></div>
+		</div>
+              </div>
+	     <?php } ?>
+		<?php /*              
+		<div class="col-md-12 col-xs-12 right-content-2st-box right-content-box no-padding">
+                <div class="col-md-9 col-xs-8 paddingClassCommon">
+                  <h5 class="h5">Zone C</h5>
+                  <h5 class="h5"><span>1-10 FLeX Tickets</span></h5>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                  <h5 class="h5">$505/<span>ea</span> <i class="fa fa-angle-right hidden-xs"></i></h5>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-xs-12 right-content-3st-box right-content-box no-padding">
+                <div class="col-md-9 col-xs-8 paddingClassCommon">
+                  <h5 class="h5">Zone B</h5>
+                  <h5 class="h5"><span>1-10 FLeX Tickets</span></h5>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                  <h5 class="h5">$583/<span>ea</span> <i class="fa fa-angle-right hidden-xs"></i></h5>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-xs-12 right-content-4st-box right-content-box no-padding">
+                <div class="col-md-9 col-xs-8 paddingClassCommon">
+                  <h5 class="h5">Zone A</h5>
+                  <h6 class="h5"><span>1-10 FLeX Tickets</span></h6>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                  <h5 class="h5">$661/<span>ea</span> <i class="fa fa-angle-right hidden-xs"></i></h5>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-xs-12 right-content-5st-box right-content-box no-padding">
+                <div class="col-md-9 col-xs-8 paddingClassCommon">
+                  <h5 class="h5">Zone Premium</h5>
+                  <h5 class="h5"><span>1-10 FLeX Tickets</span></h5>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                  <h5 class="h5">$782/<span>ea</span> <i class="fa fa-angle-right hidden-xs"></i></h5>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-xs-12 choose-pass text-center paddingClassCommon">
+                <p>Parking Passes(Not valid for entry to event)</p>
+              </div>
+
+              <div class="col-md-12 col-xs-12 right-content-6st-box right-content-box no-padding">
+                <div class="col-md-9 col-xs-8 paddingClassCommon">
+                  <h5 class="h5">249-253 W.43rd St.</h5>
+                  <h5 class="h5"><span>Row PARKING ONLY - 0.2 mi away.1-27span></h5>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                  <h5 class="h5">$42/<span>ea</span> <i class="fa fa-angle-right hidden-xs"></i></h5>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-xs-12 choose-pass text-center paddingClassCommon">
+                <p>Other offers</p>
+              </div>
+
+
+              <div class="col-md-12 col-xs-12 right-content-6st-box right-content-box no-padding">
+                <div class="col-md-9 col-xs-8 paddingClassCommon">
+                  <h5 class="h5">MEZZANINE</h5>
+                  <h5 class="h5"><span>Raw A-L . 1-8 E-Tickets</span></h5>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                  <h5 class="h5">$479/<span>ea</span> <i class="fa fa-angle-right hidden-xs"></i></h5>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-xs-12 right-content-6st-box right-content-box no-padding">
+                <div class="col-md-9 col-xs-8 paddingClassCommon">
+                  <h5 class="h5">ORCHESTRA</h5>
+                  <h5 class="h5"><span>Row A-L. 1-8 E-Tickets</span></h5>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                  <h5 class="h5">$598/<span>ea</span> <i class="fa fa-angle-right hidden-xs"></i></h5>
+                </div>
+              </div>
+	     */	?>
+            </div>
+
+            <div class="col-md-6 col-md-offset-6 legenda-btn hidden-xs hidden-sm">
+              <button class="btn btn-default"> Show map Legenda <i class="fa fa-angle-up"></i></button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+<?php
+  //echo getTicketsCustom($parameters);
+  //echo getTickets2($parameters);
+?>
+
+  <?php 
+    //echo '<img src="http://seatics.tickettransaction.com/'.getVenueMap($_REQUEST['venueID'],$_REQUEST['venueConfID']).'" />';
+  ?>
+
+
+<?php get_sidebar( 'front' ); ?>
+<?php get_footer(); ?>

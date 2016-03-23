@@ -1,0 +1,146 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Disable All WordPress Updates"
+msgstr ""
+
+#. Short description.
+msgid "Disables the theme, plugin and core update checking, the related cronjobs and notification system."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://wordpress.org/extend/plugins/disable-wordpress-theme-updates/\">Disable WordPress Theme Update</a>"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://wordpress.org/extend/plugins/disable-wordpress-plugin-updates/\">Disable WordPress Plugin Update</a>"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://wordpress.org/extend/plugins/disable-wordpress-core-update/\">Disable WordPress Core Update</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"This plugin completely disables the theme, plugin and core update checking system in WordPress. The plugin prevents WordPress from\n"
+"checking for updates including cronjobs, and prevents any notifications from being displayed."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "This plugin combines und extends these three plugins:"
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"It's <em>very</em> important that you keep your WordPress theme, core and plugins up to date. If you don't, your blog or website could\n"
+"be <strong>susceptible to security vulnerabilities</strong> or performance issues."
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"If you use this plugin, make sure you keep yourself up to date with new releases of your active WordPress version, plugins\n"
+"and themes and update them as new versions are released (simply by deactivating this plugin for a short time)."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<a href=\"https://plus.google.com/118074611982254715031\" title=\"Developer on Google+\">Developer on Google+</a> | <a href=\"http://twitter.com/wpseek\" title=\"Developer on Twitter\">Developer on Twitter</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>Looking for more WordPress plugins? Visit <a href=\"http://www.schloebe.de/portfolio/\">www.schloebe.de/portfolio/</a></strong>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Download the plugin and unzip it."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Upload the folder disable-wordpress-updates/ to your /wp-content/plugins/ folder."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the plugin from your WordPress admin panel."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Installation finished."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid ""
+"With activating the plugin all theme, core and plugin update checkings are disabled. If you want to have a quick look if new versions\n"
+"are existing, simply deactive this plugin for a short time."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a PHP notice"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Hide maintenance and update nags"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Check for already defined constants (Thanks Andreas Ek!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "WordPress HTTP API level blocking of outgoing wordpress.org API checks"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved blocking of outgoing wordpress.org API checks which caused slow speed on local environments (Thanks Makapaka!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update indicator not showing in the front-end toolbar anymore (Thanks flixflix!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an issue that still allowed WordPress to update minor (security and maintenance) versions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Disable all automatic background updates (thanks sLa NGjI's)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a PHP notice on dev environments (thanks dejernet)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Significant performance improvements when disabling updates (props flynsarmy)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor updates"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New plugin maintainer. Hello. :) Name's Oliver."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Code rewrite and cleanup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Name and URL Update (German plugin description updated)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "URL Update because of permalink changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Initial release"
+msgstr ""
+
+#. Found in faq header.
+msgid "What can I do to be up to date with new releases of my WordPress version, plugins and themes?"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Simply deativate the plugin for a short time. In case new versions are available you see the WordPress notifications."
+msgstr ""

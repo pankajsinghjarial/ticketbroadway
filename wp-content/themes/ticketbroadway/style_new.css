@@ -1,0 +1,1272 @@
+/*
+Theme Name: Twenty Twelve
+Theme URI: https://wordpress.org/themes/twentytwelve/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: The 2012 theme for WordPress is a fully responsive theme that looks great on any device. Features include a front page template with its own widgets, an optional display font, styling for post formats on both index and single views, and an optional no-sidebar page template. Make it yours with a custom menu, header image, and background.
+Version: 1.8
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: light, gray, white, one-column, two-columns, right-sidebar, fluid-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready
+Text Domain: twentytwelve
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* =Notes
+--------------------------------------------------------------
+This stylesheet uses rem values with a pixel fallback. The rem
+values (and line heights) are calculated using two variables:
+
+$rembase:     14;
+$line-height: 24;
+
+---------- Examples
+
+* Use a pixel value with a rem fallback for font-size, padding, margins, etc.
+	padding: 5px 0;
+	padding: 0.357142857rem 0; (5 / $rembase)
+
+* Set a font-size and then set a line-height based on the font-size
+	font-size: 16px
+	font-size: 1.142857143rem; (16 / $rembase)
+	line-height: 1.5; ($line-height / 16)
+
+---------- Vertical spacing
+
+Vertical spacing between most elements should use 24px or 48px
+to maintain vertical rhythm:
+
+.my-new-div {
+	margin: 24px 0;
+	margin: 1.714285714rem 0; ( 24 / $rembase )
+}
+
+---------- Further reading
+
+http://snook.ca/archives/html_and_css/font-size-with-rem
+http://blog.typekit.com/2011/11/09/type-study-sizing-the-legible-letter/
+
+
+/* =Reset
+-------------------------------------------------------------- */
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
+
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: 'PT Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'PT Sans', sans-serif;   
+    font-weight: 400;
+}
+p{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color:#6C6969;
+    font-family: 'PT Sans', sans-serif;
+}
+a{
+    font-family: 'PT Sans', sans-serif;
+    color:#f00;
+    text-decoration:none;
+}
+a:focus, a:hover {
+    color: #ffb400;
+    text-decoration: none;
+    outline: medium none;
+}
+.no-padding{
+    padding:0;
+}
+.btn:hover, 
+.btn:focus {
+    outline: medium none;
+}
+.center{
+	margin-left:auto;
+	margin-right:auto;
+	display:block;	
+}
+.no-left-padding{
+    padding-left: 0
+}
+.no-right-padding{
+     padding-right: 0
+}
+.heading{
+    font-size: 23px;
+    padding-bottom: 8px;
+    padding-top: 5px;
+}
+.heading span{
+    font-size: 16px;
+    color: #d0351d;
+}
+input[type="email"] , input[type="password"] {
+    box-shadow: none;
+}
+input:hover,
+input:focus {
+    outline:none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; 
+}
+/*--------------------------
+    top section 
+--------------------------*/
+.top-head {
+    padding-top: 0px;
+    padding-bottom: 5px;
+}
+.top a:hover{
+    color: #ffb400
+}
+.img-right{
+    margin-right: 0px;
+    margin-left: auto;
+}
+.border-top-1{
+    background: #ffb400;
+    height: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.border-top-2{
+    background: #000000;
+    height: 20px;
+}
+.border-top-3{
+    background: #000000;
+    padding: 10px 0 2px;
+}
+.border-top-3 p{
+    color:#fff;
+    margin-right: 20px;
+}
+
+
+/*-----------------------
+    INDEX-PAGE
+-----------------------*/
+
+.day{
+    font-size: 14px;
+    text-align: center;
+    background: #ffb400;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 0
+}
+.date{
+    font-size: 14px;
+    text-align: center;
+    margin: 4px 0px;
+    font-weight: 700;
+
+}
+.time{
+    font-size: 14px;
+    text-align: center;
+    margin: 4px 0px;
+}
+.date-border{
+    border: 1px solid #d5d4da;
+    border-top:none;
+}
+.choose-seat-heading{
+    font-size: 20px;
+    margin-bottom: 0px;
+    margin-top: 35px;
+}
+.choose-top-right ul li h2{
+    font-size: 14px;
+    margin-top: -18px;
+    margin-left: 15px;
+}
+.choose-top-right ul .different-li{
+    color: #df532b
+}
+.choose-right-border .checkbox input[type="checkbox"], 
+.choose-right-border .checkbox-inline input[type="checkbox"]{
+    margin-left: 10px;
+}
+.choose-right-border{
+    border-right: 1px solid #d5d4da;
+    height: 34px;
+}
+
+.all-range-sec{
+    padding-top: 5px;
+}
+.range{
+
+    width: 96%;
+    padding-left: 18px;
+}
+.range-price{
+    font-size: 14px;
+    margin: 0px;
+}
+.range span{
+    border: 1px solid #d5d4da;
+    padding-right: 7px;
+}
+.ticket-only .checkbox, .radio {
+    position: relative;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+.choose-right-any{
+    font-size: 13px;
+    margin: 0;
+}
+.choose-right-any span{
+    color: #969699
+}
+.choose-right-any i{
+    color: #969699
+}
+.chose-map-right-content{
+    border: 1px solid #d5d4da;
+    box-shadow: -3px -2px 8px #d5d4da;
+}
+.right-content-1st-box{
+    border-left: 10px solid #a2bf54;
+    border-bottom: 1px solid #d5d4da
+}
+.right-content-2st-box{
+    border-left: 10px solid #60abd0;
+    border-bottom: 1px solid #d5d4da
+}
+.right-content-3st-box{
+    border-left: 10px solid #b288b6;
+    border-bottom: 1px solid #d5d4da
+}
+.right-content-4st-box{
+    border-left: 10px solid #e7a353;
+    border-bottom: 1px solid #d5d4da
+}
+.right-content-5st-box{
+    border-left: 10px solid #cc6868;
+    border-bottom: 1px solid #d5d4da
+}
+.right-content-6st-box{
+    border-bottom: 1px solid #d5d4da;
+    border-left: 1px solid #d5d4da
+}
+.right-content-box span{
+    color: #86868d
+}
+.choose-pass p{
+    font-size: 12px;
+    padding: 0.;
+    margin: 0;
+    color: #fff;
+}
+.choose-pass{
+    background: #494848
+}
+.low-to-high span{
+    color: #92868a
+}
+.low-to-high {
+    margin: 0px;
+    background: #e8e8e8;
+    padding: 5px;
+    color: #999;
+}
+.choose-tick-sec{
+    padding: 10px 0;
+}
+.icon-btn{
+    padding: 0px 4px;
+    font-size: 16px;
+}
+.btn-2{
+    margin-top: -3px;
+}
+
+.legenda-btn .btn-default {
+    color: #333;
+    background-color: #f2f2f2;
+    border-color: #ccc;
+    box-shadow: 1px 0px 2px #ADAAAA;
+    margin-left: -40px;
+    margin-top: -26px;
+    margin-bottom: 20px;
+}
+.top-right .btn-default {
+    color: #333;
+    background-color: #ffb400;
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 0;
+}
+.top-right .btn-default:hover {
+    color: #333;
+    background-color: #ffb400;
+}
+.footer-mail .btn-default{
+    color: #fff;
+    background-color: #000;
+    width: 100%;
+    border: 0px none;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 0;
+} 
+.footer-mail .btn-default:hover{
+    color: #fff;
+    background-color: #000;
+} 
+/*-----------------------
+    checkout-PAGE
+-----------------------*/
+.checkout-section {
+    padding-bottom: 60px;
+}
+.checkout-section .breadcrumb {
+    padding: 16px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: 1px solid #d5d4da;
+} 
+.checkout-section .breadcrumb > .active {
+    color: #4a4a4a;
+    font-size: 16px;
+}
+.checkout-section .breadcrumb > li > a{
+    font-size: 16px;
+}
+.checkout-section .breadcrumb > li > a:hover {
+    color: #ffb400
+}
+ /*------ col-md-8 css end ---*/
+.checkout-section  a {
+    color: #000;
+    text-decoration: underline;
+}
+.left-content{
+    padding-right: 75px;
+}
+.payment{
+    border: 1px solid #d5d4da;
+    background: #e9e8ea;
+    padding: 0px 30px 25px;
+}
+.color-img{
+    margin-top: 28px;
+}
+.checkout-section label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 16px;
+}
+.checkout-section label span {
+    color: #d0351d
+}
+.checkout-section label .optional{
+    color: #818080
+}
+.chek-boxsign{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.checkout-section .chek-boxsign label{
+    font-size: 14px;
+}
+.card-details{
+    margin-top: 20px;
+}
+.gift{
+    margin-top: 20px;
+}
+.gift a{
+    font-size: 15px;
+    text-decoration: none;
+    color: #3073ac
+}
+.form-circle a i{
+    margin-top: 34px;
+    font-size: 18px;
+    color: #3073ac;
+    z-index: 1
+}
+.phn-form{
+    z-index: 1
+}
+ /*------ col-md-8 css end ---*/
+.right-content{
+    
+}
+.right-content-top{
+    background: #e9e8ea;
+    padding: 0 20px;  
+}
+.right-aladdin-head{
+    font-size: 18px;
+}
+.right-content .right-time-para p{
+    margin-bottom: 0;
+    font-size: 14px;
+    margin-top: -4px;
+}
+.delivery{
+    font-size: 13px;
+    margin-top: 14px;
+}
+.change{
+    font-size: 14px;
+    text-align: right;
+    margin-top: 14px;
+    color: #3073ac;
+}
+.tckt{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    margin: 0px 2px 0px;
+    font-size: 14px;
+}
+.right-time-para{
+    padding-bottom: 12px;
+    padding-top: 4px;
+}
+.border{
+    background: #d5d4da;
+    height: 1px;
+}
+.tckt a i{
+    font-size: 18px;
+    color: #3073ac;
+}
+.price-multi{
+    margin-bottom: 0px;
+    font-size: 14px;
+    text-align: right;
+}
+.total-price{
+    margin-bottom: 0px;
+    font-size: 14px;
+    text-align: right;
+}
+.right-side-total{
+    text-align: right;
+    margin-bottom: 0px;
+    padding-top: 5px;
+}
+.right-side-total i{
+    font-size: 18px;
+    color: #3073ac;
+}
+.bottom-total-price{
+    text-align: right;
+    color: #669d05;
+    font-size: 14px;
+    font-weight: 700;
+    padding-top: 5px;
+}
+.right-amn{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.right-bottom-para{
+    font-size: 15px
+}
+.right-bottom-para a{
+    color: #3073ac;
+    text-decoration: none;
+}
+.order-btn .btn-primary{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 100%;
+}
+.map-section{
+    margin-top: 60px;
+}
+output {
+    display: block;
+    padding-top: 0px;
+    font-size: 14px;
+    border: 1px solid #d5d4da;
+    width: 40px;
+    padding-left: 3px;
+
+}
+/*------ col-md-4 css Start ---*/
+input[type="range"] {
+    display: block;
+    width: 96%;
+    border-radius: 50%;
+}
+
+
+
+
+/*------ col-md-4 css End ---*/
+
+
+/*-----------------------
+    footer Section
+------------------------*/
+.footer-bg{
+    background: #000;
+    padding: 0 22px 10px;
+    margin-bottom: 6px;
+    margin-top: 45px;
+}
+
+.footer-bg ul{
+   padding-top: 24px;;
+}
+.footer-bg ul li a{
+    color: #fff;
+    text-decoration: none;
+    padding-right: 26px;
+}
+.footer-img{
+    margin-top: 10px;
+}
+.copy-right{
+ 
+}
+.btn-default:hover{
+    background: transparent;
+}
+
+
+/*---------------------------
+       Creat Account 
+----------------------------*/
+.top ul li {
+    border-right: 1px solid #e1e1e1;
+    height: 56px;
+    padding-top: 8px;
+}
+.dropdown-menu {
+    margin: 17px 0 0;
+    background-color: #fff;
+}
+.top .dropdown-menu li{
+    padding-top: 0px;
+    height: 30px; 
+}
+.top .dropdown-menu li a{
+    font-weight: 600;
+}
+.translate{
+    padding-top: 0px;
+    margin-top: -3px;
+    height: 60px !important;
+    cursor: pointer;
+}
+.top .translate .dropdown{
+    margin-top: 24px;
+}
+.top img{
+    margin-top: 10px
+}
+.translate-img{
+    margin-top: -5px
+}
+.top-right h2{
+    font-size: 16px;
+    float: right;
+    margin-right: 10px;
+}
+.top-right .input-group{
+    margin-top: 15px;
+}
+.top-right .input-group-addon {
+    color: #000;
+    background-color: #ffc600;
+    border: 1px solid #ffc600;
+}
+.top-border{
+    border-bottom: 1px solid #e1e1e1;
+    margin-top: -15px;
+}
+.top-head .list-inline > li {
+    display: inline-block;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.top-head-right{
+   text-align: right;
+}
+.top-head-right h2 {
+    font-size: 24px;
+    margin: 0;
+    margin-top: -33px;
+    margin-bottom: 22px;
+}
+
+
+/**--------- navigation-section ---------*/
+.navbar-default {
+    background-color: #000;
+    border-color: #000;
+    border-bottom: none;
+    border-top: #000;
+}
+.navigation-section .navbar {
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+.navigation-section .navbar-nav > .nav-menu {
+ 
+}
+.first-border-side{
+    margin-left: -31px;
+}
+.navigation-section .first-nav {
+     margin-left: -30px;    
+}
+.navigation-section .navbar-default .navbar-nav > li > a {
+    color: #777;
+    font-size: 16px;
+    padding: 15px 34px;
+}
+.navigation-section .navbar-default li a:hover {
+    color: #FFB400;
+}
+.navigation-section .navbar-default .active a:hover {
+    color: #FFB400;
+}
+.border-img{
+    height: 50px;
+}
+.navigation-section .nav-search{
+    background: #e1e1e1;
+    padding: 14px 20px;
+    margin-left: 18px;
+}
+.navigation-section .nav-search i{
+    font-size: 20px
+}
+.search-form-input{
+    padding: 0
+}
+.search-form-input .btn-default{
+   width: 85%;
+   background: #ffb400;
+   border: 1px solid #ffb400;
+   font-weight: 600;
+   transition:.5s;
+}
+.search-form-input .btn-default:hover{
+   background: #000;
+   border-color: #000;
+   color: #fff
+}
+.create-acc-heading{
+   border-bottom: 1px solid #d5d4da;
+   padding-bottom: 10px
+}
+.create-acc-heading h1{
+    font-size: 26px;
+    color: #000;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+}
+.create-acc-heading span{
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: lowercase;
+}
+.create-acc-heading .right{
+    text-align: right;    
+}
+.creat-acc-heading-form{
+    font-size: 22px;
+    padding-bottom:0px;
+    color: #000;
+}
+.create-acc-heading .right .list-inline > li {
+    display: inline-block;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+
+/*------search-section -----*/
+.search-section {
+     
+}
+.search-bg{
+    background: #e1e1e1;
+    margin-top: -10px;
+    padding:20px 0;
+    border-bottom: 1px solid #b2b2b2;
+}
+.search-section .input-group{
+    padding-left: 15px;
+    float: left;
+    padding-right: 5px;
+}
+.search-section .input-group-addon {
+    background-color: #fff;
+    border-left: none;
+    border-right: 1px solid #ccc;
+
+}
+.search-section .search-form-input  label{
+    font-size: 17px;
+    margin-top: 5px;
+    font-weight: 400;
+    float: left;
+}
+.search-bg{
+
+}
+.crt-left-form{
+   padding-right: 8px
+}
+.crt-right-form{
+   padding-left: 8px 
+}
+.bthd{
+     padding-right: 8px
+}
+.bthd2{
+     padding-left: 8px
+}
+.acc-girl{
+    margin-left: auto;
+}
+.buy-ticket-btn{
+    margin-top: 10px;
+    
+}
+.required-fild span {
+    color: #d0351d;
+}
+.required-fild h1{
+    font-size: 15px;
+    margin: 0;
+}
+.two-btn-group{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.two-btn-group .btn-default{
+    background: #ffb400;
+    border: #ffb400;
+    color: #000;
+    font-size: 16px;
+    width: 25%;
+    border-radius: 0;
+    transition:.5s;
+}
+.two-btn-group .btn-default:hover, 
+.two-btn-group .btn-default:focus {
+    outline: medium none;
+    background: #000;
+    border: #000;
+    color: #fff;
+}
+.crt-left-form .form-control {
+    border-radius: 0px;
+}
+.crt-right-form .form-control {
+    border-radius: 0px;
+}
+
+/*----------------------------
+        SIGN-UP
+-----------------------------*/
+.registere-border{
+    border-top: 1px solid #d5d4da;
+    border-bottom: 1px solid #d5d4da;
+    padding-top: 10px
+}
+.buy-ticket-btn form{
+    margin-top: 20px;
+    border-bottom: 1px solid #d5d4da;
+    margin-bottom: 10px;
+    padding-bottom: 12px;
+}
+.sign-up-right-content .sign-up-custom {
+    font-size: 16px;
+    margin: 5px 0px;
+}
+.sign-up-right-content .sign-up-login-right ul li{
+    font-size: 16px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.sign-up-login a:hover{
+    color: #ffb400
+}
+.sign-up-right-content .form-control {
+    width: 60%;
+}
+.sign-up-right-content{
+    margin-top: 40px;
+}
+.sign-up-back-btn .btn-default {
+    background: #ffb400;
+    border: #ffb400;
+    color: #000;
+    font-size: 16px;
+    border-radius: 0;
+    margin-top: 00px;
+    transition:.5s;
+}
+.sign-up-back-btn .btn-default:hover {
+    background: #000;
+    border-color: #000;
+    color: #fff; 
+}
+.sign-up-login .btn-default{
+    background: #ffb400;
+    border: 1px solid #ffb400;
+    font-weight: 400;
+    border-radius: 0;
+    padding: 5px 30px;
+    font-size: 16px;
+    color: #000;
+    transition:.5s;
+}
+.sign-up-login .btn-default:hover {
+    background: #000;
+    border-color: #000;
+    color: #fff; 
+}
+.sign-up-login a{
+    color: #d10008;
+    font-weight: 700
+}
+
+.sign-up-creat-acc-para-form{
+    padding-bottom: 80px;
+    border-bottom: 1px solid #d5d4da;
+}
+/*-----------------------------
+        Dashboard 
+-----------------------------*/
+.dashboard-left-content h1{
+    text-transform: uppercase;
+    font-size: 26px;
+    color: #000;
+    font-weight: 600;
+    border-bottom: 1px solid #d5d4da;
+    padding-bottom: 10px;
+}
+.dashboard-left-content ul li a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #4a4a4a;
+    transiotion:.5s;
+}
+.dashboard-left-content ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #d5d4da;
+}
+.dashboard-left-content a:hover{
+    color: #ffb400;
+    font-weight: 700;
+}
+.dashboard-right-content h1{
+    text-transform: uppercase;
+    font-size: 26px;
+    color: #000;
+    font-weight: 600;
+    border-bottom: 1px solid #d5d4da;
+    padding-bottom: 10px;
+}
+.dashboard-right-content h2{
+    padding: 10px 5px;
+    margin: 10px 0;
+    background: #f1f0f0;
+    font-size: 16px;
+    color: #4a4a4a
+}
+.dashboard-right-content p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.dashboard-right-content h3{
+    font-size: 18px;
+    font-weight: 600;
+    color: #000
+}
+ 
+.information h4{
+    margin: 0
+}
+.information .inform-content{
+    margin-top: 10px; 
+}
+.border-bottom-inform{
+    height: 1px;
+    background: #d5d4da;
+    margin-top: 10px;
+}
+.dashboard-border-bottom {
+    border-bottom: 1px solid #d5d4da
+}
+.dashboard-border-bottom h6{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 16px
+}
+
+/*----------- footer -----------*/
+
+.footer-section-top{
+    background: #ffb400;
+    padding-left: 28px;
+}
+.footer-section h2{
+    font-size: 16px;
+    float: right;
+    margin-right: 10px;
+}
+.footer-section .input-group{
+    margin-top: 15px;
+}
+.footer-section .input-group-addon {
+    color: #000;
+    background-color: #ffc600;
+    border: 1px solid #ffc600;
+}
+.footer-section .footer-left{
+    margin-top: 5px
+}
+.footer-section .footer-left .icon-border i{
+    font-size: 22px;
+    margin-top: 2px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    border-right: 1px solid #a87700;
+    padding-right: 16px;
+    color: #231f20
+}
+.footer-section .footer-left .instagram-icon-border i{
+    font-size: 22px;
+    margin-top: 2px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    padding-right: 16px;
+    color: #231f20
+}
+.sign-heading-form{
+    font-size: 22px;
+    padding-bottom:10px;
+    color: #000;
+    border-bottom: 1px solid #d5d4da;
+
+}
+.footer-section-bottom{
+    background: #000;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.footer-section  .footer-section-bottom h1{
+    font-size: 18px;
+    border-bottom: 1px solid #ba160c;
+    padding-bottom: 9px;
+    color: #fff
+}
+.footer-section  .footer-section-bottom ul li i{
+    padding-right: 6px;
+    color: #ba160c;
+    transition:10s;
+
+}
+.footer-section .facebook i{
+    transition:.5s;
+}
+.footer-section .twitter i{
+    transition:.5s;
+}
+.footer-section .youtube i{
+    transition:.5s;
+}
+.footer-section .instagram i{
+    transition:.5s;
+}
+
+.footer-section .facebook:hover i{
+    color: #354F88;
+}
+.footer-section .twitter:hover i{
+    color: #4DC8F1;
+}
+.footer-section .youtube:hover i{
+    color: #CE332D;
+}
+.footer-section .instagram:hover i{
+    color: #A17257;
+}
+
+.footer-section  .footer-section-bottom ul li{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid #121212;
+    transition:10s;
+    
+}
+.footer-section  .footer-section-bottom ul li:last-child{
+    border-bottom: none;
+}
+.footer-section  .footer-section-bottom ul li a{
+    color: #9a9a9a;
+    
+     
+}
+.footer-section  .footer-section-bottom ul li:hover a,
+.footer-section  .footer-section-bottom ul i:hover {
+    color: #ffb400;
+}
+.footer-section  .footer-section-bottom .contact h5{
+    font-size: 17px;
+    width: 60%;
+    margin-left: 50px;
+    margin-top: -30px;
+    color: #9a9a9a;
+}
+.footer-section  .footer-section-bottom .contact .footer-phone{
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.footer-all-logo{
+    margin-top: 18px;
+}
+.footer-logo {
+    height: 70px;
+    margin-bottom: 10px
+}
+.footer-logo-2 {
+    margin-top: 12px;
+}
+.fogot-mail .form-control{
+    padding: 6px 247px 6px 15px;
+    border-radius: 0
+}
+.fogot-mail .btn-default {
+    background: #ffb400;
+    border: 1px solid #ffb400;
+    font-weight: 600;
+    border-radius: 0;
+    transition:.5s;
+}
+.fogot-mail .btn-default:hover {
+    background: #000;
+    border: 1px solid #000;
+    color: #fff
+}
+.information a:hover{
+    color: #ffb400
+}
+.back-btn .btn-default{
+    background: #ffb400;
+    border: #ffb400;
+    color: #000;
+    font-size: 16px;
+    border-radius: 0;
+    margin-top: 30px;
+    transition:.5s;
+}
+.back-btn .btn-default:hover{
+    background: #000;
+    border: #000;
+    color: #fff;
+}
+.creat-acc-girl{
+    margin-top: 20px;
+}
+.select-2{
+    margin-top: 28px;
+}
+/*-------------------
+    media section
+---------------------*/
+@media (min-width: 768px){
+.navbar-nav {
+    float: inherit;
+    margin: 0;
+}
+}
+@media (max-width: 768px) and (min-width: 480px){
+    
+}
+@media (max-width: 979px){    
+   .left-content{
+        padding-right: 0px;
+    }
+    .no-right-padding {
+        padding: 0;
+    }
+    select{
+        margin-top: 10px;
+    }
+    .security-code{
+        padding: 0px 18px 0 0;
+    }
+    .color-img {
+        margin-top: 14px;
+        padding: 0;
+    }
+    .right-aladdin-head {
+        padding-top: 20px;
+    }
+    .tikt-top{
+        margin-top: 25px;
+    }
+    .legenda-btn .btn-default {
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    .choose-right-border {
+        border-right: 1px solid #d5d4da;
+        height: auto;
+    }
+    output {
+        margin-top: 10px;
+    }
+    .ticket-only .checkbox label{
+        padding: 0
+    }
+    .range {
+        padding-left: 0px;
+    }
+    input[type="range"] {
+        margin-top: 10px;
+    }
+    /*------- Create account ------*/
+    .top-head-right{
+        text-align: left;
+    }
+    .top-head-right h2 {
+        font-size: 24px;
+        margin: 0;
+        margin-top: -33px;
+        margin-bottom: 22px;
+        margin-left: 45px;
+    }
+    .head-tel{
+        margin-top: 20px;
+    }
+    .top ul li {
+        border-right: 1px solid #fff;
+    }
+    .top-border{
+        border-bottom:  none;
+        margin-top: -15px;
+    }
+    .top-head-logo{
+        margin-top: 10px;
+    }
+     
+    .search-form-input{
+        padding: 5px;
+    }
+    .search-form-input-xs{
+         padding: 5px;
+    }
+    .top-right h2{
+        font-size: 16px;
+        float: left;   
+    }
+    
+    .search-section .input-group {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 28px;
+    }
+    .navigation-section .first-nav {
+        margin-left:  0px;
+    }
+    .acc-girl{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .sign-up-right-content.form-control {
+        width: 100%;
+    }
+    .border-bottom-inform {
+        margin-top: 30px;
+    }
+    .footer-section .footer-left .icon-border i{
+
+        border-right: none;
+    }
+    .fogot-mail .form-control {
+        padding: 6px 12px;
+        border-radius: 0;
+    }
+    .footer-section h2 {
+        float: left;
+    }
+    .footer-section .input-group {
+        padding-bottom: 15px;
+    }
+    .select-2{
+        margin-top: 15px;
+        margin-left: -6px;
+        width: 99%;
+    }
+    .two-btn-group .btn-default {
+        width: 100%;
+        margin-top: 11px;
+    }
+
+}
+@media (max-width: 480px){
+    .price-multi {
+        margin-bottom: 0px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .footer-bg ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding-right: 3px;
+    }
+    .checkout-section .breadcrumb > li > a {
+      font-size: 14px;
+    }
+    .ticket-only .checkbox label{
+        padding: 0
+    }
+    .login{
+      margin-top: 10px; 
+    }
+    .border-bottom-inform {
+        margin-top: 30px;
+    }
+}
+@media (max-width: 1196px) and (min-width:992px){
+    .navigation-section .navbar-default .navbar-nav > li > a {
+        padding: 15px 21px;
+    }
+}
+@media (max-width: 992px) and (min-width:768px){
+    .navigation-section .navbar-default .navbar-nav > li > a {
+        padding: 15px 13px;
+    }
+}
+@media (max-width: 1200px) and (min-width:980px){
+	
+}
